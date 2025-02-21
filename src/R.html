@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creative Hero Section</title>
+    <link
+      href="https://fonts.cdnfonts.com/css/druk-wide-bold"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Preloader Styles */
+      .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #1a1a1a;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+      .preloader .logo {
+        font-weight: bold;
+        font-size: clamp(2rem, 10vw, 4rem); /* Responsive font size */
+        letter-spacing: 1px;
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        opacity: 0;
+      }
+
+      .preloader .loading-text {
+        font-size: clamp(0.8rem, 3vw, 1rem); /* Responsive font size */
+        margin-top: 1rem;
+        opacity: 0;
+      }
+
+      body {
+        background-color: #1a1a1a;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        overflow-x: hidden;
+      }
+      main {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 1rem 2rem; /* Adjusted padding for mobile */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+      }
+
+      .logo {
+        font-weight: bold;
+        font-size: clamp(1.2rem, 5vw, 1.5rem); /* Responsive font size */
+        letter-spacing: 1px;
+      }
+
+      .menu {
+        display: flex;
+        gap: 1.5rem; /* Reduced gap for smaller screens */
+      }
+
+      .menu-item {
+        color: white;
+        text-decoration: none;
+        font-size: clamp(0.9rem, 3vw, 1rem); /* Responsive font size */
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      /* Hamburger Menu */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 101;
+      }
+
+      .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      /* Hamburger Animation */
+      .hamburger.active div:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .hamburger.active div:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active div:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .menu {
+          display: none;
+          flex-direction: column;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          background-color: #1a1a1a;
+          z-index: 100;
+          padding-top: 6rem;
+          padding-left: 2rem;
+        }
+        .menu-item {
+          font-size: clamp(1.2rem, 5vw, 1.5rem); /* Responsive font size */
+        }
+        .menu.active {
+          display: flex;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+      }
+
+      .hero {
+        height: 100vh;
+        display: flex;
+        flex-direction: column; /* Stack content vertically on small screens */
+        align-items: center;
+        justify-content: center;
+        padding: 1rem; /* Adjusted padding for mobile */
+        gap: 1rem; /* Added gap between items */
+      }
+
+      .text-container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .line {
+        overflow: hidden;
+        margin: -1rem 0;
+      }
+
+      .line:first-child {
+        margin-top: 2rem; /* Adjusted margin for mobile */
+      }
+
+      .word {
+        display: block;
+        font-size: clamp(2rem, 8vw, 6rem); /* Responsive font size */
+        font-weight: 900;
+        line-height: 1.1;
+        transform: translateY(100%);
+        opacity: 0;
+      }
+
+      .image {
+        width: 100%; /* Full width for mobile */
+        max-width: 300px; /* Limit maximum size */
+        height: auto; /* Auto height for responsiveness */
+        object-fit: contain;
+        margin: 1rem 0; /* Added margin for spacing */
+        transform: translateY(100%);
+        opacity: 0;
+      }
+
+      /* Adjust layout for larger screens */
+      @media (min-width: 768px) {
+        .hero {
+          flex-direction: row; /* Horizontal layout for larger screens */
+          gap: 2rem; /* Added gap between items */
+        }
+        .image {
+          width: 200px; /* Fixed width for larger screens */
+          height: 200px; /* Fixed height for larger screens */
+          margin: 0; /* Reset margin */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+      <div class="logo">PHASE</div>
+      <div class="loading-text">Loading...</div>
+    </div>
+    <!-- Main Content -->
+    <nav>
+      <div class="logo">PHASE</div>
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="menu" id="menu">
+        <a href="#" class="menu-item">Home</a>
+        <a href="#" class="menu-item">Our vision</a>
+        <a href="#" class="menu-item">Our team</a>
+        <a href="#" class="menu-item">Our projects</a>
+        <a href="#" class="menu-item">Contact us</a>
+      </div>
+    </nav>
+
+    <main>
+      <div class="hero">
+        <div>
+          <img class="image" src="A.png" alt="hi" />
+        </div>
+        <div class="text-container">
+          <div>
+            <img class="image" src="B.jpg" alt="hi" />
+          </div>
+          <div class="line">
+            <span class="word">IMAGINING</span>
+          </div>
+          <div class="line">
+            <span class="word">UNIQUE</span>
+          </div>
+          <div class="line">
+            <span class="word">CONCEPTS</span>
+          </div>
+          <div class="line">
+            <span class="word">AND DIGITAL</span>
+          </div>
+          <div class="line">
+            <span class="word">EXPERIENCES</span>
+          </div>
+          <div>
+            <img class="image" src="C.png" alt="hi" />
+          </div>
+        </div>
+        <div>
+          <img class="image" src="D.png" alt="hi" />
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Preloader Animation
+      const preloader = document.getElementById("preloader");
+
+      gsap.fromTo(
+        ".preloader .logo",
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.5,
+          ease: "power4.out",
+          onComplete: () => {
+            // Show loading text
+            gsap.to(".preloader .loading-text", {
+              opacity: 1,
+              duration: 0.5,
+              delay: 0.5,
+              onComplete: () => {
+                // Hide preloader and show main content
+                gsap.to(preloader, {
+                  opacity: 0,
+                  duration: 1,
+                  ease: "power4.out",
+                  onComplete: () => {
+                    preloader.style.display = "none";
+                    gsap.to("main", { opacity: 1, visibility: "visible" });
+                  },
+                });
+              },
+            });
+          },
+        }
+      );
+
+      // Toggle hamburger menu
+      const hamburger = document.getElementById("hamburger");
+      const menu = document.getElementById("menu");
+      const menuItems = document.querySelectorAll(".menu-item");
+
+      let isMenuOpen = false;
+
+      hamburger.addEventListener("click", () => {
+        isMenuOpen = !isMenuOpen;
+
+        if (isMenuOpen) {
+          // Open menu
+          hamburger.classList.add("active");
+          menu.classList.add("active");
+
+          // Animate menu items from bottom to top
+          gsap.fromTo(
+            menuItems,
+            { y: 100, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.5,
+              stagger: 0.1,
+              ease: "power4.out",
+            }
+          );
+        } else {
+          // Close menu
+          // Animate menu items from top to bottom
+          gsap.to(menuItems, {
+            y: 100,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power4.in",
+            onComplete: () => {
+              hamburger.classList.remove("active");
+              menu.classList.remove("active");
+            },
+          });
+        }
+      });
+
+      // Animate menu items
+      gsap.to(".menu-item", {
+        y: 0,
+        opacity: 1,
+        duration: 1.5,
+        stagger: 0.1,
+        duration: 1,
+        ease: "power4.out",
+        delay: 3.5,
+      });
+
+      // Animate images
+      gsap.to(".image", {
+        y: 0,
+        opacity: 1,
+        duration: 1.5,
+        stagger: 0.1,
+        ease: "power4.out",
+        delay: 4.53,
+      });
+
+      // Animate text lines
+      gsap.to(".word", {
+        y: 0,
+        opacity: 1,
+        duration: 1.5,
+        stagger: 0.1,
+        ease: "power4.out",
+        delay: 3.53,
+      });
+
+      // Optional: Add hover effect for menu items
+      document.querySelectorAll(".menu-item").forEach((item) => {
+        item.addEventListener("mouseenter", () => {
+          gsap.to(item, {
+            scale: 0.9,
+            duration: 0.3,
+          });
+        });
+
+        item.addEventListener("mouseleave", () => {
+          gsap.to(item, {
+            scale: 1,
+            duration: 0.3,
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

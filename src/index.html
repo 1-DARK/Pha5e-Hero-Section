@@ -77,14 +77,13 @@
 
       .menu {
         display: flex;
-
         gap: 2rem;
       }
 
       .menu-item {
         color: white;
         text-decoration: none;
-        font-size: 1.8rem;
+        font-size: 1rem;
         opacity: 0;
         transform: translateY(20px);
       }
@@ -130,7 +129,7 @@
           height: 100vh;
           background-color: #1a1a1a;
           z-index: 100;
-          padding-top: 6rem; /* Add space from the top */
+          padding-top: 6rem;
           padding-left: 2rem;
         }
         .menu-item {
@@ -139,7 +138,6 @@
           font-size: 1.5rem;
           font-style: normal;
           font-family: "Druk Wide Bold", sans-serif;
-
           font-weight: 600;
           opacity: 0;
           transform: translateY(20px);
@@ -173,6 +171,10 @@
         margin: -1rem 0;
       }
 
+      .line:first-child {
+        margin-top: 4rem; /* Added space for the first line */
+      }
+
       .word {
         display: block;
         font-size: clamp(3rem, 10vw, 6rem);
@@ -182,12 +184,14 @@
         opacity: 0;
       }
 
-      /* Center only the first line (IMAGINING) */
-      .line:first-child {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      .image {
+        width: 300px;
+        transform: translateY(100%);
+        object-fit: contain;
+        height: 300px;
+        padding-left: 50px;;
       }
+      
     </style>
   </head>
   <body>
@@ -215,7 +219,13 @@
 
     <main>
       <div class="hero">
+        <div>
+          <img class="image" src="A.png" alt="hi" />
+        </div>
         <div class="text-container">
+          <div>
+            <img class="image" src="B.jpg" alt="hi" />
+          </div>
           <div class="line">
             <span class="word">IMAGINING</span>
           </div>
@@ -231,6 +241,12 @@
           <div class="line">
             <span class="word">EXPERIENCES</span>
           </div>
+          <div>
+            <img class="image" src="C.png" alt="hi" />
+          </div>
+        </div>
+        <div>
+          <img class="image" src="D.png" alt="hi" />
         </div>
       </div>
     </main>
@@ -269,6 +285,7 @@
           },
         }
       );
+
       // Toggle hamburger menu
       const hamburger = document.getElementById("hamburger");
       const menu = document.getElementById("menu");
@@ -320,9 +337,18 @@
         duration: 1.5,
         stagger: 0.1,
         duration: 1,
-
         ease: "power4.out",
         delay: 3.5,
+      });
+
+      // Animate images
+      gsap.to(".image", {
+        y: 0,
+        opacity: 1,
+        duration: 1.5,
+        stagger: 0.1,
+        ease: "power4.out",
+        delay: 4.53,
       });
 
       // Animate text lines
