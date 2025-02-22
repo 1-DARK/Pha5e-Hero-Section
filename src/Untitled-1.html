@@ -198,13 +198,45 @@
         transform: translateY(100%);
         object-fit: contain;
         height: 300px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        cursor: pointer;
       }
 
-      /* Smaller size for B.png and C.png in desktop/tablet mode */
+      /* Hover effect for images */
+      .image:hover {
+        transform: scale(1.2); /* Enlarge the image */
+        z-index: 10; /* Bring the image to the front */
+      }
+
+      /* Text overlay for images */
+      .image-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .image-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none; /* Ensure text doesn't interfere with hover */
+      }
+
+      .image-container:hover .image-text {
+        opacity: 1; /* Show text on hover */
+      }
+
+      /* Smaller size and reduced transform for B.jpg in desktop/tablet mode */
       @media (min-width: 769px) {
         .ii {
           width: 250px; /* Smaller size for desktop/tablet */
-          height: 250px; /* Smaller size for desktop/tablet */
+          height: 350px; /* Smaller size for desktop/tablet */
+          transform: translateY(40%); /* Decreased transform value */
         }
       }
 
@@ -262,12 +294,14 @@
 
     <main>
       <div class="hero">
-        <div>
+        <div class="image-container">
           <img class="image" src="A.png" alt="hi" />
+          <div class="image-text">Text for A</div>
         </div>
         <div class="text-container">
-          <div>
+          <div class="image-container">
             <img class="image ii" src="B.jpg" alt="hi" />
+            <div class="image-text">Text for B</div>
           </div>
           <div class="line">
             <span class="word">IMAGINING</span>
@@ -284,12 +318,14 @@
           <div class="line">
             <span class="word">EXPERIENCES</span>
           </div>
-          <div>
-            <img class="image ii" src="C.png" alt="hi" />
+          <div class="image-container">
+            <img class="image" src="C.png" alt="hi" />
+            <div class="image-text">Text for C</div>
           </div>
         </div>
-        <div>
+        <div class="image-container">
           <img class="image" src="D.png" alt="hi" />
+          <div class="image-text">Text for D</div>
         </div>
       </div>
     </main>
