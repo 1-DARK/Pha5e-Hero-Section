@@ -32,7 +32,7 @@
       }
       .preloader .logo {
         font-weight: bold;
-        font-size: 4rem;
+        font-size: 6rem;
         letter-spacing: 1px;
         background: linear-gradient(90deg, #ff7e5f, #feb47b);
         -webkit-background-clip: text;
@@ -41,9 +41,21 @@
       }
 
       .preloader .loading-text {
-        font-size: 1rem;
+        font-size: 2rem;
         margin-top: 1rem;
         opacity: 0;
+      }
+      .ii:hover {
+        transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
+        z-index: 10; /* Bring the image to the front */
+        border-radius: 30px;
+  
+      }
+      .i:hover {
+        transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
+        z-index: 10; /* Bring the image to the front */
+        border-radius: 30px;
+  
       }
 
       body {
@@ -57,6 +69,12 @@
         opacity: 0;
         visibility: hidden;
       }
+       .image:hover {
+        transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
+        z-index: 10; /* Bring the image to the front */
+        border-radius: 30px;
+  
+      }
 
       nav {
         position: fixed;
@@ -69,9 +87,10 @@
         z-index: 100;
       }
 
+      /* Navbar Logo */
       .logo {
         font-weight: bold;
-        font-size: 1.5rem;
+        font-size: 2rem; /* Increased from 1.5rem to 2rem */
         letter-spacing: 1px;
       }
 
@@ -79,11 +98,17 @@
         display: flex;
         gap: 2rem;
       }
-
+      .image {
+        transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
+        z-index: 10; /* Bring the image to the front */
+        border-radius: 30px;
+  
+      }
+      /* Navbar Menu Items */
       .menu-item {
         color: white;
         text-decoration: none;
-        font-size: 1rem;
+        font-size: 1.25rem; /* Increased from 1rem to 1.25rem */
         opacity: 0;
         transform: translateY(20px);
       }
@@ -116,7 +141,9 @@
       .hamburger.active div:nth-child(3) {
         transform: rotate(-45deg) translate(5px, -5px);
       }
-
+.i{
+  height: 200px;
+}
       /* Responsive Styles */
       @media (max-width: 956px) {
         .menu {
@@ -132,10 +159,17 @@
           padding-top: 6rem;
           padding-left: 2rem;
         }
+        .image:hover {
+        transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
+        z-index: 10; /* Bring the image to the front */
+        border-radius: 30px;
+  
+      }
+     
         .menu-item {
           color: white;
           text-decoration: none;
-          font-size: 1.5rem;
+          font-size: 2rem; /* Increased from 1.5rem to 1.75rem */
           font-style: normal;
           font-family: "Druk Wide Bold", sans-serif;
           font-weight: 600;
@@ -157,6 +191,8 @@
         align-items: center;
         justify-content: center;
         padding: 2rem;
+        gap: 2rem; /* Add gap between items */
+        overflow: hidden; /* Prevent overflow */
       }
 
       .text-container {
@@ -164,6 +200,11 @@
         max-width: 1400px;
         margin: 0 auto;
         text-align: center;
+        position: relative; /* Ensure relative positioning for child elements */
+      }
+
+      .text-container img {
+        vertical-align: middle; /* Align images vertically with text */
       }
 
       .line {
@@ -188,10 +229,114 @@
         width: 300px;
         transform: translateY(100%);
         object-fit: contain;
-        height: 300px;
-        padding-left: 50px;;
+     
+        transition: transform 0.3s ease, opacity 0.3s ease; /* Add transition for smooth zoom effect */
+        cursor: pointer;
+        border-radius: 10px;
       }
-      
+
+      /* Hover effect for images */
+      .image:hover {
+        transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
+        z-index: 10; /* Bring the image to the front */
+        border-radius: 30px;
+  
+      }
+
+      /* Text overlay for images */
+      .image-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .image-text {
+        position: absolute;
+        top: 40%;
+        left: 70%;
+        transform: translate(-50%, -50%);
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none; /* Ensure text doesn't interfere with hover */
+      }
+
+      .image-container:hover .image-text {
+        opacity: 1; /* Show text on hover */
+      }
+      .image:hover {
+        transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
+        z-index: 10; /* Bring the image to the front */
+        border-radius: 30px;
+  
+      }
+
+      /* Smaller size and reduced transform for B.jpg in desktop/tablet mode */
+      @media (min-width: 769px) {
+        .ii {
+          width: 250px; /* Smaller size for desktop/tablet */
+          height: 350px; /* Smaller size for desktop/tablet */
+          transform: translateY(40%); /* Decreased transform value */
+        }
+
+        .ii:hover {
+          transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
+        }
+        .image:hover {
+        transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
+        z-index: 10; /* Bring the image to the front */
+        border-radius: 30px;
+  
+      }
+      }
+
+      /* Mobile and Tablet Responsive Styles */
+      @media (max-width: 768px) {
+        .hero {
+          flex-direction: row; /* Keep images and text in a row */
+          gap: 1rem; /* Reduce gap between items */
+          padding: 1rem; /* Reduce padding */
+        }
+
+        .word {
+          font-size: clamp(1.5rem, 6vw, 2.5rem); /* Smaller font size for mobile */
+          margin: 0.25rem 0; /* Reduced margin between lines */
+        }
+
+        .image-text {
+          position: absolute;
+          top: 80%;
+          left: 80%;
+          transform: translate(-50%, -50%);
+          font-size: 0.8rem;
+          font-weight: bold;
+          color: white;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          pointer-events: none; /* Ensure text doesn't interfere with hover */
+        }
+
+        .image {
+          width: 100%; /* Use percentage-based width for responsive scaling */
+          height: auto; /* Maintain aspect ratio */
+          max-width: 250px; /* Limit maximum size */
+        }
+
+        .text-container {
+          padding: 0.5rem; /* Reduced padding in the text container */
+        }
+        .image:hover {
+        transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
+        z-index: 10; /* Bring the image to the front */
+        border-radius: 30px;
+  
+      }
+
+        .line {
+          margin: 0.1rem 0; /* Minimal margin between lines */
+        }
+      }
     </style>
   </head>
   <body>
@@ -219,12 +364,18 @@
 
     <main>
       <div class="hero">
-        <div>
+        <div class="image-container">
+          <a href="https://www.pha5e.com/">
           <img class="image" src="A.png" alt="hi" />
+        </a>
+          <div class="image-text">Science</div>
         </div>
         <div class="text-container">
-          <div>
-            <img class="image" src="B.jpg" alt="hi" />
+          <div class="image-container">
+            <a href="https://www.pha5e.com/">
+            <img class="image ii" src="B.jpg" alt="hi" />
+          </a>
+            <div class="image-text">ML</div>
           </div>
           <div class="line">
             <span class="word">IMAGINING</span>
@@ -241,12 +392,18 @@
           <div class="line">
             <span class="word">EXPERIENCES</span>
           </div>
-          <div>
-            <img class="image" src="C.png" alt="hi" />
+          <div class="image-container">
+            <a href="https://www.pha5e.com/">
+            <img class="image i" src="C.png" alt="hi" />
+          </a>
+            <div class="image-text">LAND</div>
           </div>
         </div>
-        <div>
+        <div class="image-container">
+          <a href="https://www.pha5e.com/">
           <img class="image" src="D.png" alt="hi" />
+        </a>
+          <div class="image-text">AI</div>
         </div>
       </div>
     </main>
@@ -338,7 +495,7 @@
         stagger: 0.1,
         duration: 1,
         ease: "power4.out",
-        delay: 3.5,
+        delay: 3.9,
       });
 
       // Animate images
