@@ -45,18 +45,6 @@
         margin-top: 1rem;
         opacity: 0;
       }
-      .ii:hover {
-        transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
-        z-index: 10; /* Bring the image to the front */
-        border-radius: 30px;
-  
-      }
-      .i:hover {
-        transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
-        z-index: 10; /* Bring the image to the front */
-        border-radius: 30px;
-  
-      }
 
       body {
         background-color: #1a1a1a;
@@ -68,12 +56,6 @@
       main {
         opacity: 0;
         visibility: hidden;
-      }
-       .image:hover {
-        transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
-        z-index: 10; /* Bring the image to the front */
-        border-radius: 30px;
-  
       }
 
       nav {
@@ -90,7 +72,7 @@
       /* Navbar Logo */
       .logo {
         font-weight: bold;
-        font-size: 2rem; /* Increased from 1.5rem to 2rem */
+        font-size: 2rem;
         letter-spacing: 1px;
       }
 
@@ -98,17 +80,12 @@
         display: flex;
         gap: 2rem;
       }
-      .image {
-        transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
-        z-index: 10; /* Bring the image to the front */
-        border-radius: 30px;
-  
-      }
+
       /* Navbar Menu Items */
       .menu-item {
         color: white;
         text-decoration: none;
-        font-size: 1.25rem; /* Increased from 1rem to 1.25rem */
+        font-size: 1.25rem;
         opacity: 0;
         transform: translateY(20px);
       }
@@ -141,9 +118,11 @@
       .hamburger.active div:nth-child(3) {
         transform: rotate(-45deg) translate(5px, -5px);
       }
-.i{
-  height: 200px;
-}
+
+      .i {
+        height: 200px;
+      }
+
       /* Responsive Styles */
       @media (max-width: 956px) {
         .menu {
@@ -159,17 +138,10 @@
           padding-top: 6rem;
           padding-left: 2rem;
         }
-        .image:hover {
-        transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
-        z-index: 10; /* Bring the image to the front */
-        border-radius: 30px;
-  
-      }
-     
         .menu-item {
           color: white;
           text-decoration: none;
-          font-size: 2rem; /* Increased from 1.5rem to 1.75rem */
+          font-size: 2rem;
           font-style: normal;
           font-family: "Druk Wide Bold", sans-serif;
           font-weight: 600;
@@ -191,8 +163,8 @@
         align-items: center;
         justify-content: center;
         padding: 2rem;
-        gap: 2rem; /* Add gap between items */
-        overflow: hidden; /* Prevent overflow */
+        gap: 2rem;
+        overflow: hidden;
       }
 
       .text-container {
@@ -200,11 +172,11 @@
         max-width: 1400px;
         margin: 0 auto;
         text-align: center;
-        position: relative; /* Ensure relative positioning for child elements */
+        position: relative;
       }
 
       .text-container img {
-        vertical-align: middle; /* Align images vertically with text */
+        vertical-align: middle;
       }
 
       .line {
@@ -213,7 +185,7 @@
       }
 
       .line:first-child {
-        margin-top: 4rem; /* Added space for the first line */
+        margin-top: 4rem;
       }
 
       .word {
@@ -229,18 +201,18 @@
         width: 300px;
         transform: translateY(100%);
         object-fit: contain;
-     
-        transition: transform 0.3s ease, opacity 0.3s ease; /* Add transition for smooth zoom effect */
+        height: 300px;
+        transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
         cursor: pointer;
         border-radius: 10px;
       }
 
       /* Hover effect for images */
       .image:hover {
-        transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
-        z-index: 10; /* Bring the image to the front */
+        transform: scale(1.2) translateY(0);
+        z-index: 10;
         border-radius: 30px;
-  
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
       }
 
       /* Text overlay for images */
@@ -259,49 +231,37 @@
         color: white;
         opacity: 0;
         transition: opacity 0.3s ease;
-        pointer-events: none; /* Ensure text doesn't interfere with hover */
+        pointer-events: none;
       }
 
       .image-container:hover .image-text {
-        opacity: 1; /* Show text on hover */
-      }
-      .image:hover {
-        transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
-        z-index: 10; /* Bring the image to the front */
-        border-radius: 30px;
-  
+        opacity: 1;
       }
 
       /* Smaller size and reduced transform for B.jpg in desktop/tablet mode */
       @media (min-width: 769px) {
         .ii {
-          width: 250px; /* Smaller size for desktop/tablet */
-          height: 350px; /* Smaller size for desktop/tablet */
-          transform: translateY(40%); /* Decreased transform value */
+          width: 250px;
+          height: 350px;
+          transform: translateY(40%);
         }
 
         .ii:hover {
-          transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
+          transform: scale(1.2) translateY(0);
         }
-        .image:hover {
-        transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
-        z-index: 10; /* Bring the image to the front */
-        border-radius: 30px;
-  
-      }
       }
 
       /* Mobile and Tablet Responsive Styles */
       @media (max-width: 768px) {
         .hero {
-          flex-direction: row; /* Keep images and text in a row */
-          gap: 1rem; /* Reduce gap between items */
-          padding: 1rem; /* Reduce padding */
+          flex-direction: row;
+          gap: 1rem;
+          padding: 1rem;
         }
 
         .word {
-          font-size: clamp(1.5rem, 6vw, 2.5rem); /* Smaller font size for mobile */
-          margin: 0.25rem 0; /* Reduced margin between lines */
+          font-size: clamp(1.5rem, 6vw, 2.5rem);
+          margin: 0.25rem 0;
         }
 
         .image-text {
@@ -314,27 +274,21 @@
           color: white;
           opacity: 0;
           transition: opacity 0.3s ease;
-          pointer-events: none; /* Ensure text doesn't interfere with hover */
+          pointer-events: none;
         }
 
         .image {
-          width: 100%; /* Use percentage-based width for responsive scaling */
-          height: auto; /* Maintain aspect ratio */
-          max-width: 250px; /* Limit maximum size */
+          width: 100%;
+          height: auto;
+          max-width: 250px;
         }
 
         .text-container {
-          padding: 0.5rem; /* Reduced padding in the text container */
+          padding: 0.5rem;
         }
-        .image:hover {
-        transform: scale(1.2) translateY(0); /* Zoom in and reset translateY */
-        z-index: 10; /* Bring the image to the front */
-        border-radius: 30px;
-  
-      }
 
         .line {
-          margin: 0.1rem 0; /* Minimal margin between lines */
+          margin: 0.1rem 0;
         }
       }
     </style>
@@ -366,15 +320,15 @@
       <div class="hero">
         <div class="image-container">
           <a href="https://www.pha5e.com/">
-          <img class="image" src="A.png" alt="hi" />
-        </a>
+            <img class="image" src="A.png" alt="hi" />
+          </a>
           <div class="image-text">Science</div>
         </div>
         <div class="text-container">
           <div class="image-container">
             <a href="https://www.pha5e.com/">
-            <img class="image ii" src="B.jpg" alt="hi" />
-          </a>
+              <img class="image ii" src="B.jpg" alt="hi" />
+            </a>
             <div class="image-text">ML</div>
           </div>
           <div class="line">
@@ -394,15 +348,15 @@
           </div>
           <div class="image-container">
             <a href="https://www.pha5e.com/">
-            <img class="image i" src="C.png" alt="hi" />
-          </a>
+              <img class="image i" src="C.png" alt="hi" />
+            </a>
             <div class="image-text">LAND</div>
           </div>
         </div>
         <div class="image-container">
           <a href="https://www.pha5e.com/">
-          <img class="image" src="D.png" alt="hi" />
-        </a>
+            <img class="image" src="D.png" alt="hi" />
+          </a>
           <div class="image-text">AI</div>
         </div>
       </div>
@@ -421,13 +375,11 @@
           duration: 1.5,
           ease: "power4.out",
           onComplete: () => {
-            // Show loading text
             gsap.to(".preloader .loading-text", {
               opacity: 1,
               duration: 0.5,
               delay: 0.5,
               onComplete: () => {
-                // Hide preloader and show main content
                 gsap.to(preloader, {
                   opacity: 0,
                   duration: 1,
@@ -454,11 +406,9 @@
         isMenuOpen = !isMenuOpen;
 
         if (isMenuOpen) {
-          // Open menu
           hamburger.classList.add("active");
           menu.classList.add("active");
 
-          // Animate menu items from bottom to top
           gsap.fromTo(
             menuItems,
             { y: 100, opacity: 0 },
@@ -471,8 +421,6 @@
             }
           );
         } else {
-          // Close menu
-          // Animate menu items from top to bottom
           gsap.to(menuItems, {
             y: 100,
             opacity: 0,
@@ -505,7 +453,7 @@
         duration: 1.5,
         stagger: 0.1,
         ease: "power4.out",
-        delay: 4.53,
+        delay: 5,
       });
 
       // Animate text lines
@@ -515,7 +463,7 @@
         duration: 1.5,
         stagger: 0.1,
         ease: "power4.out",
-        delay: 3.53,
+        delay: 4.53,
       });
 
       // Optional: Add hover effect for menu items
